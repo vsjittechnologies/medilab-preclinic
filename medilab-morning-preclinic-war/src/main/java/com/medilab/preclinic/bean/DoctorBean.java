@@ -12,7 +12,7 @@ import lombok.Data;
  *
  */
 @Data
-public class DoctorBean extends AddressBean implements Serializable {
+public class DoctorBean implements Serializable {
 
 	/**
 	 * 
@@ -29,5 +29,14 @@ public class DoctorBean extends AddressBean implements Serializable {
 	private String gender;
 	private String status;
 	private String phone;
+	private String dept;
+	private String address;
+	private String city;
+	private String country;
+	private String state;
+	private String postalCode;
+	
+	private String avatar;
+	private String biography;
 
 }

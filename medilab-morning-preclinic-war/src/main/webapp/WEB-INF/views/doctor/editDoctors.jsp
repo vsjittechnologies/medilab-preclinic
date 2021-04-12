@@ -17,12 +17,13 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">Add Doctor</h4>
+                        <h4 class="page-title">Edit Doctor</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <form:form action="${requestContext.path}/doctors/addDoctor" modelAttribute="doctBean">
+                        <form:form action="${requestContext.path}/doctors/updateDoctor" modelAttribute="doctBean">
+                        <form:hidden path="doctId"/>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -48,19 +49,7 @@
                                         <form:input class="form-control" type="email" path="email"/>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        
-                                        <form:password path="password" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <form:password path="cpassword" class="form-control"/>
-                                    </div>
-                                </div>
+                                
 								<div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Date of Birth</label>
@@ -91,10 +80,7 @@
 											<div class="form-group">
 												<label>Department</label>
 												
-												<form:select path="dept" class="form-control select">
-												  <%-- <form:option value="California">California</form:option>
-												  <form:option value="Alaska">Alaska</form:option>
-												  <form:option value="Alabama">Alabama</form:option> --%>
+												<form:select path="dept" class="form-control select">												
 												  <c:forEach items="${deptBeanList}" var="name">
 												    <form:option value="${name}">${name }</form:option>
 												  </c:forEach>
@@ -197,7 +183,7 @@
 								</div>
                             </div>
                             <div class="m-t-20 text-center">
-                                <button class="btn btn-primary submit-btn">Create Doctor</button>
+                                <button class="btn btn-primary submit-btn">Update Doctor</button>
                             </div>
                         </form:form>
                     </div>

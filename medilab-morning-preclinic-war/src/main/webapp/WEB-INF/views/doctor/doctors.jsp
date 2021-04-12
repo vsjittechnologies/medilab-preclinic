@@ -22,7 +22,58 @@
                         <a href="${requestContext.path}/doctors/addDoctorPage" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Doctor</a>
                     </div>
                 </div>
-				<div class="row doctor-grid">
+                
+                <div class="row doctor-grid">
+                <c:forEach items="${doctBeanList }" var="doctBean">
+                    <div class="col-md-4 col-sm-4  col-lg-3">
+                        <div class="profile-widget">
+                            <div class="doctor-img">
+                                <a class="avatar" href="profile.html"><img alt="" src="${requestContext.path}/assets/img/doctor-thumb-03.jpg"></a>
+                            </div>
+                            <div class="dropdown profile-action">
+                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="${requestContext.path}/doctors/edit/${doctBean.doctId}">
+                                    <i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                    <a class="dropdown-item" href="${requestContext.path}/doctors/delete/${doctBean.doctId}" data-toggle="modal" data-target="#delete_doctor">
+                                    <i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                    </div>
+                                    <div id="delete_doctor" class="modal fade delete-modal"
+											role="dialog">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-body text-center">
+														<img src="${requestContext.path}/assets/img/sent.png"
+															alt="" width="50" height="46">
+														<h3>Are you sure want to delete this Doctor?</h3>
+														<div class="m-t-20">
+															<a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+															<%-- <form
+																action="${requestContext.path}/departments/deleteDept/${deptBean.deptId}"> --%>
+																<a href="${requestContext.path}/doctors/delete/${doctBean.doctId}">
+																	<button type="submit" class="btn btn-danger">Delete</button>
+																</a>
+															<!-- </form> -->
+														</div>
+													</div>
+												</div>
+											</div>
+                                </div>
+                            
+                            <h4 class="doctor-name text-ellipsis"><a href="profile.html">
+                             <c:out value="${doctBean.fname} ${doctBean.lname}"></c:out>
+                            </a></h4>
+                            <div class="doc-prof">${doctBean.biography}</div>
+                            <div class="user-country">
+                                <i class="fa fa-map-marker"></i> ${doctBean.address}
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </c:forEach>
+                    </div>
+                
+				<!-- <div class="row doctor-grid">
                     <div class="col-md-4 col-sm-4  col-lg-3">
                         <div class="profile-widget">
                             <div class="doctor-img">
@@ -251,7 +302,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 				<div class="row">
                     <div class="col-sm-12">
                         <div class="see-all">
