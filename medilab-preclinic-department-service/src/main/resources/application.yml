@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: department-service
+  h2:
+    console:
+      enabled: true
+      path: /h2Console
+server:
+  port: 5001
+
+logging:
+  file: 
+    name: department.log
+  level:
+    root: debug
+    
