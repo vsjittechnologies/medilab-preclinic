@@ -11,6 +11,4 @@ server:
 logging:
   file: 
     name: department.log
-  level:
-    root: debug
     

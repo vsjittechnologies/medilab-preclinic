@@ -42,5 +42,10 @@ public class ApiError {
 	}
 	private String reason;
 	
-  
+  public static void main(String[] args) {
+	String str = "str";
+	Integer.parseInt(str);
+	
+	
+}
 }
