@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: doctor-service
+  h2:
+    console:
+      enabled: true
+      path: /h2Console
+server:
+  port: 5002
+
+logging:
+  file: 
+    name: doctor.log
+    
