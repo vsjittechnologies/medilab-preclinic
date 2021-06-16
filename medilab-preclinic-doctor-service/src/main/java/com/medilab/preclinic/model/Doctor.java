@@ -6,6 +6,7 @@ package com.medilab.preclinic.model;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,7 +41,10 @@ public class Doctor implements Serializable {
 	private String status;
 	private String phone;
 	private String avatar;
-	private String biography;	
+	private String biography;
+	
+	@Column(name="DepartmentDetails")
+	private String deptInfo;
 	
 	
 

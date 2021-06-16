@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.medilab.preclinic.bean.DoctorBean;
 import com.medilab.preclinic.model.Doctor;
 import com.medilab.preclinic.repo.DoctorRepo;
+import com.medilab.preclinic.util.OutboundCommunicator;
 
 /**
  * @author nsanda
@@ -38,16 +39,13 @@ public class MedilabDoctorServiceImpl implements MedilabDoctorService {
 	@Override
 	public DoctorBean save(DoctorBean doctBean) {
 		Doctor doctModel = new Doctor();
-		Address addrModel = new Address();
-		BeanUtils.copyProperties(doctBean, addrModel);
 		BeanUtils.copyProperties(doctBean, doctModel);
-		
-		
+		//get the department information
+		String deptDetails = OutboundCommunicator.getDepartmentDetails(doctBean.getDept());
+		doctModel.setDeptInfo(deptDetails);
 		doctRepo.save(doctModel);
 
-		BeanUtils.copyProperties(doctModel, doctBean);
-		
-		BeanUtils.copyProperties(addrModel, doctBean);		
+		BeanUtils.copyProperties(doctModel, doctBean);	
 
 		return doctBean;
 	}

@@ -11,4 +11,11 @@ server:
 logging:
   file: 
     name: department.log
+springdoc:
+  swagger-ui:
+    path: /department-swagger.html
+  api-docs:
+    enabled: true
+    path: /department-api-doc.html
+
     
