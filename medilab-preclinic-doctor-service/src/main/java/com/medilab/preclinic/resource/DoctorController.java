@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +27,14 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api")
 @Slf4j
+@RefreshScope
 public class DoctorController {
 
 	@Autowired
 	private MedilabDoctorService deptService;
 	
+	@Value("${medilab.doctorFee}")
+	private String doctorFee;
 	//@RequestMapping(value="/Doctors",method=RequestMethod.GET)
 	@GetMapping("/Doctors")
 	public List<DoctorBean> viewDoctorsBoard() {
@@ -41,12 +46,14 @@ public class DoctorController {
 	}
 	
 	//@RequestMapping(value="/Doctors/{deptId}",method=RequestMethod.GET)
-	@GetMapping("/Doctors/{deptId}")
-	public ResponseEntity<Object> getDoctor(@PathVariable("deptId") int deptId) throws DoctorNotFound {
-		log.info("deprtment id is:\t"+deptId);
+	@GetMapping("/Doctors/{doctId}")
+	public ResponseEntity<Object> getDoctor(@PathVariable("doctId") int doctId) throws DoctorNotFound {
+		log.info("doctor id is:\t"+doctId);
+		log.info("the consultaion fee of the doctor is {}",doctorFee);
 		//try {
-			DoctorBean deptBeanList = deptService.findById(deptId);
-			return ResponseEntity.ok(deptBeanList);
+			DoctorBean deptBean = deptService.findById(doctId);
+			deptBean.setConsultFee(Double.valueOf(doctorFee));
+			return ResponseEntity.ok(deptBean);
 		/*} catch (DoctorNotFound e) {
 			ApiError error = new ApiError(HttpStatus.NOT_FOUND.value(), 
 					e.getMessage(), 

@@ -38,5 +38,7 @@ public class DoctorBean implements Serializable {
 	
 	private String avatar;
 	private String biography;
+	
+	private double consultFee;
 
 }

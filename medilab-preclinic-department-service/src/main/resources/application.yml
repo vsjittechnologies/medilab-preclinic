@@ -9,6 +9,12 @@ spring:
     import:
     - configserver:http://localhost:8888
     
+  rabbitmq:
+    host: snake.rmq2.cloudamqp.com
+    virtual-host: etemmzqb
+    username: etemmzqb
+    password: Ga8j__in_8bAyqy-Gj1HObwQGTFPEDfX
+    
 
 
  
