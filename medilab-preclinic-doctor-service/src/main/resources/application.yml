@@ -1,14 +1,10 @@
 spring:
   application:
-    name: doctor-service
-  h2:
-    console:
-      enabled: true
-      path: /h2Console
-server:
-  port: 5002
-
-logging:
-  file: 
-    name: doctor.log
-    
+    name: medilab-doctor-service
+  cloud:
+    config:
+      uri:
+      - http://localhost:8888
+  config:
+    import:
+    - configserver:http://localhost:8888
